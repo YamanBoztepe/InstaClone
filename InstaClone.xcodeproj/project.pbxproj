@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C521FB62682368B000AA39F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1C521FB52682368B000AA39F /* Kingfisher */; };
+		1C521FC026824D3C000AA39F /* SplashScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C521FBF26824D3C000AA39F /* SplashScreenController.swift */; };
 		1CAD05D52681175A002A61C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05D42681175A002A61C1 /* AppDelegate.swift */; };
 		1CAD05D72681175A002A61C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05D62681175A002A61C1 /* SceneDelegate.swift */; };
 		1CAD05D92681175A002A61C1 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05D82681175A002A61C1 /* MainController.swift */; };
@@ -15,12 +17,13 @@
 		1CAD05E126811765002A61C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CAD05DF26811765002A61C1 /* LaunchScreen.storyboard */; };
 		1CAD05F126812598002A61C1 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05F026812598002A61C1 /* PhotoCell.swift */; };
 		1CAD05F42681298C002A61C1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05F32681298C002A61C1 /* NetworkManager.swift */; };
-		1CAD05F726813082002A61C1 /* UnsplashAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05F626813082002A61C1 /* UnsplashAPIModel.swift */; };
+		1CAD05F726813082002A61C1 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05F626813082002A61C1 /* Photo.swift */; };
 		1CAD05FE26813802002A61C1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD05FD26813802002A61C1 /* MainViewModel.swift */; };
 		1CAD06012681C32A002A61C1 /* FooterSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD06002681C32A002A61C1 /* FooterSpinnerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C521FBF26824D3C000AA39F /* SplashScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenController.swift; sourceTree = "<group>"; };
 		1CAD05D12681175A002A61C1 /* InstaClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CAD05D42681175A002A61C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CAD05D62681175A002A61C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +34,7 @@
 		1CAD05E226811765002A61C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CAD05F026812598002A61C1 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		1CAD05F32681298C002A61C1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		1CAD05F626813082002A61C1 /* UnsplashAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIModel.swift; sourceTree = "<group>"; };
+		1CAD05F626813082002A61C1 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		1CAD05FD26813802002A61C1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1CAD06002681C32A002A61C1 /* FooterSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterSpinnerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,12 +44,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C521FB62682368B000AA39F /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C521FB826823A54000AA39F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1CAD05F32681298C002A61C1 /* NetworkManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1C521FB926823A5B000AA39F /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				1C521FBF26824D3C000AA39F /* SplashScreenController.swift */,
+				1C521FBA26823A62000AA39F /* Main */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		1C521FBA26823A62000AA39F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1CAD05ED26811870002A61C1 /* Model */,
+				1CAD05EC2681186B002A61C1 /* ViewModel */,
+				1CAD05EB26811864002A61C1 /* Controller */,
+				1CAD05EA26811860002A61C1 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		1CAD05C82681175A002A61C1 = {
 			isa = PBXGroup;
 			children = (
@@ -66,10 +98,8 @@
 		1CAD05D32681175A002A61C1 /* InstaClone */ = {
 			isa = PBXGroup;
 			children = (
-				1CAD05ED26811870002A61C1 /* Model */,
-				1CAD05EC2681186B002A61C1 /* ViewModel */,
-				1CAD05EB26811864002A61C1 /* Controller */,
-				1CAD05EA26811860002A61C1 /* View */,
+				1C521FB826823A54000AA39F /* Common */,
+				1C521FB926823A5B000AA39F /* Module */,
 				1CAD05D42681175A002A61C1 /* AppDelegate.swift */,
 				1CAD05D62681175A002A61C1 /* SceneDelegate.swift */,
 				1CAD05DA2681175A002A61C1 /* Main.storyboard */,
@@ -83,7 +113,8 @@
 		1CAD05EA26811860002A61C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1CAD05FA268137DD002A61C1 /* Main */,
+				1CAD05F026812598002A61C1 /* PhotoCell.swift */,
+				1CAD06002681C32A002A61C1 /* FooterSpinnerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -91,7 +122,7 @@
 		1CAD05EB26811864002A61C1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1CAD05F9268137D4002A61C1 /* Main */,
+				1CAD05D82681175A002A61C1 /* MainController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -99,7 +130,7 @@
 		1CAD05EC2681186B002A61C1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1CAD05FC268137F4002A61C1 /* Main */,
+				1CAD05FD26813802002A61C1 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -107,43 +138,9 @@
 		1CAD05ED26811870002A61C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1CAD05FB268137EA002A61C1 /* Network */,
+				1CAD05F626813082002A61C1 /* Photo.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		1CAD05F9268137D4002A61C1 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				1CAD05D82681175A002A61C1 /* MainController.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		1CAD05FA268137DD002A61C1 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				1CAD05F026812598002A61C1 /* PhotoCell.swift */,
-				1CAD06002681C32A002A61C1 /* FooterSpinnerView.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		1CAD05FB268137EA002A61C1 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				1CAD05F32681298C002A61C1 /* NetworkManager.swift */,
-				1CAD05F626813082002A61C1 /* UnsplashAPIModel.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		1CAD05FC268137F4002A61C1 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				1CAD05FD26813802002A61C1 /* MainViewModel.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +159,9 @@
 			dependencies = (
 			);
 			name = InstaClone;
+			packageProductDependencies = (
+				1C521FB52682368B000AA39F /* Kingfisher */,
+			);
 			productName = InstaClone;
 			productReference = 1CAD05D12681175A002A61C1 /* InstaClone.app */;
 			productType = "com.apple.product-type.application";
@@ -189,6 +189,9 @@
 				Base,
 			);
 			mainGroup = 1CAD05C82681175A002A61C1;
+			packageReferences = (
+				1C521FB42682368B000AA39F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 1CAD05D22681175A002A61C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,10 +222,11 @@
 				1CAD05FE26813802002A61C1 /* MainViewModel.swift in Sources */,
 				1CAD05F126812598002A61C1 /* PhotoCell.swift in Sources */,
 				1CAD05D92681175A002A61C1 /* MainController.swift in Sources */,
+				1C521FC026824D3C000AA39F /* SplashScreenController.swift in Sources */,
 				1CAD06012681C32A002A61C1 /* FooterSpinnerView.swift in Sources */,
 				1CAD05F42681298C002A61C1 /* NetworkManager.swift in Sources */,
 				1CAD05D52681175A002A61C1 /* AppDelegate.swift in Sources */,
-				1CAD05F726813082002A61C1 /* UnsplashAPIModel.swift in Sources */,
+				1CAD05F726813082002A61C1 /* Photo.swift in Sources */,
 				1CAD05D72681175A002A61C1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8F92F5YZ5;
 				INFOPLIST_FILE = InstaClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,6 +397,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8F92F5YZ5;
 				INFOPLIST_FILE = InstaClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -425,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C521FB42682368B000AA39F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C521FB52682368B000AA39F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C521FB42682368B000AA39F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CAD05C92681175A002A61C1 /* Project object */;
 }

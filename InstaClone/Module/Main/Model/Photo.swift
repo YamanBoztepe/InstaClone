@@ -1,5 +1,5 @@
 //
-//  UnsplashAPIModel.swift
+//  Photo.swift
 //  InstaClone
 //
 //  Created by Yaman Boztepe on 21.06.2021.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct UnsplashAPIModel: Decodable {
+struct Photo: Decodable {
     let createdAt: String
-    let urls: ImageUrls
+    let urls: ImageUrl
     let likes: Int
     let user: User
 }
 
-struct ImageUrls: Decodable {
+struct ImageUrl: Decodable {
     let full: String
     let regular: String
 }

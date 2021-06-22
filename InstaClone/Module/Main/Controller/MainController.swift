@@ -12,23 +12,12 @@ class MainController: UIViewController {
     private var collectionView: UICollectionView!
     private let viewModel = MainViewModel()
     
-    private var photos = [UIImage]() {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
-            }
-        }
-    }
-    
-    private var numberOfPage = 1
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchPhotos()
         setLayout()
-        
+        viewModel.fetchPhotos()
+        updateUI()
     }
     
     
@@ -37,13 +26,13 @@ class MainController: UIViewController {
         setCollectionView()
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
-
-        setNavigatonLayout()
+        
+        title = "Photos"
     }
     
     private func setCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: view.frame.width, height: view.frame.height/3)
+        layout.itemSize = .init(width: view.frame.width, height: view.frame.height/2.5)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         
@@ -56,34 +45,30 @@ class MainController: UIViewController {
         collectionView.delegate = self
     }
     
-    private func setNavigatonLayout() {
-        title = "Photos"
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    
-    // MARK: - Fetching Photos
-    private func fetchPhotos() {
-        viewModel.fetchPhotos { [weak self] (photos) in
-            self?.photos = photos
+    private func updateUI() {
+        viewModel.photosFetched = { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
         }
     }
-
+    
 }
+
 
 
 // MARK: - TableView
 extension MainController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+        viewModel.photoURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
         
-        let photo = photos[indexPath.row]
-        cell.configure(with: photo)
+        let photoURL = viewModel.photoURLs[indexPath.row]
+        cell.configure(with: photoURL)
         
         return cell
     }
@@ -93,7 +78,7 @@ extension MainController: UICollectionViewDataSource, UICollectionViewDelegate, 
         if kind == UICollectionView.elementKindSectionFooter {
             guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterSpinnerView.identifier, for: indexPath) as? FooterSpinnerView else { return UICollectionReusableView() }
             
-            if photos.count > 0 {
+            if viewModel.photoURLs.count > 0 {
                 footer.spinner.startAnimating()
             }
             return footer
@@ -119,13 +104,7 @@ extension MainController: UIScrollViewDelegate {
         if (currentPosition > collectionView.contentSize.height - scrollView.frame.height)
             && collectionView.contentSize.height > 0 {
             
-            if viewModel.fetchStatus != .fetching {
-                numberOfPage += 1
-                viewModel.fetchPhotos(page: numberOfPage) { [weak self] (photos) in
-                    self?.photos.append(contentsOf: photos)
-                }
-            }
-            
+            viewModel.fetchMorePhotosIfPossible()
         }
     }
 }

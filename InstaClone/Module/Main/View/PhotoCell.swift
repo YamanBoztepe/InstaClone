@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoCell: UICollectionViewCell {
     
@@ -13,6 +14,7 @@ class PhotoCell: UICollectionViewCell {
     
     private let imgPhoto: UIImageView = {
         let img = UIImageView()
+        img.translatesAutoresizingMaskIntoConstraints = false
         img.contentMode = .scaleToFill
         img.backgroundColor = .systemGray
         return img
@@ -38,19 +40,18 @@ class PhotoCell: UICollectionViewCell {
     }
     
     private func setLayout() {
-        imgPhoto.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            imgPhoto.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imgPhoto.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imgPhoto.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            imgPhoto.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
-            imgPhoto.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             imgPhoto.heightAnchor.constraint(equalTo: heightAnchor)
         ])
     }
     
-    func configure(with image: UIImage) {
-        self.imgPhoto.image = image
+    func configure(with data: String) {
+        let url = URL(string: data)
+        imgPhoto.kf.setImage(with: url)
     }
     
     

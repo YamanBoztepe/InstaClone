@@ -14,7 +14,7 @@ class NetworkManager {
     
     private init() { }
     
-    func fetchData(numberOfPage: Int = 1, completionHandler completion: @escaping (Result<[UnsplashAPIModel],Error>) -> Void) {
+    func fetchData(numberOfPage: Int = 1, completionHandler completion: @escaping (Result<[Photo],Error>) -> Void) {
         guard let url = URL(string: URLConstants.baseURL +
                                 "?page=\(numberOfPage)" +
                                 "&client_id=\(URLConstants.apiKey)") else { return }
@@ -30,7 +30,7 @@ class NetworkManager {
                     let jsonDecoder = JSONDecoder()
                     jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                     
-                    let results = try jsonDecoder.decode([UnsplashAPIModel].self, from: data)
+                    let results = try jsonDecoder.decode([Photo].self, from: data)
                     completion(.success(results))
                 } catch {
                     completion(.failure(error))
