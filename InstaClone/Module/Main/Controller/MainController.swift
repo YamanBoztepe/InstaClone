@@ -20,7 +20,6 @@ class MainController: UIViewController {
         updateUI()
     }
     
-    
     // MARK: - Setting UI
     private func setLayout() {
         setCollectionView()
@@ -47,8 +46,10 @@ class MainController: UIViewController {
     
     private func updateUI() {
         viewModel.photosFetched = { [weak self] in
+            guard let self = self else { return }
+            
             DispatchQueue.main.async {
-                self?.collectionView.reloadData()
+                self.collectionView.reloadData()
             }
         }
     }

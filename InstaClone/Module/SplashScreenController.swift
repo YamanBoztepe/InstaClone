@@ -23,28 +23,24 @@ class SplashScreenController: UIViewController {
         return nv
     }()
     
-    private let textStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .vertical
-        sv.distribution = .fillProportionally
-        sv.alignment = .center
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
-    }()
-    
-    private let lblfrom: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "From"
-        lbl.textColor = .systemGray
-        lbl.font = .systemFont(ofSize: 20)
-        return lbl
-    }()
-    
     private let lblAppcent: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Appcent"
-        lbl.textColor = .systemOrange
-        lbl.font = .boldSystemFont(ofSize: 30)
+        
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.textAlignment = .center
+        lbl.numberOfLines = 0
+        
+        let appcentMutableAttrText = NSMutableAttributedString(string: "from\n", attributes: [
+                                                                NSAttributedString.Key.foregroundColor : UIColor.systemGray,
+                                                                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)])
+        
+        let appcentAttrText = NSAttributedString(string: "Appcent", attributes: [
+                                                NSAttributedString.Key.foregroundColor : UIColor.systemOrange,
+                                                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)])
+        
+        appcentMutableAttrText.append(appcentAttrText)
+        lbl.attributedText = appcentMutableAttrText
+        
         return lbl
     }()
     
@@ -64,14 +60,18 @@ class SplashScreenController: UIViewController {
         let center = view.center
         
         UIView.animate(withDuration: 1) { [weak self] in
-            self?.imgInstagram.frame.size.width = size
-            self?.imgInstagram.frame.size.height = size
-            self?.imgInstagram.center = center
+            guard let self = self else { return }
+            self.imgInstagram.frame.size.width = size
+            self.imgInstagram.frame.size.height = size
+            self.imgInstagram.center = center
         }
         
         UIView.animate(withDuration: 1) { [weak self] in
-            self?.imgInstagram.alpha = 0
-            self?.startApp()
+            guard let self = self else { return }
+            self.imgInstagram.alpha = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.startApp()
+            }
         }
 
     }
@@ -81,17 +81,16 @@ class SplashScreenController: UIViewController {
     }
     
     private func setLayout() {
-        [lblfrom, lblAppcent].forEach { textStackView.addArrangedSubview($0) }
-        [imgInstagram, textStackView].forEach { view.addSubview($0) }
+        [imgInstagram, lblAppcent].forEach { view.addSubview($0) }
         
         view.backgroundColor = .black
         imgInstagram.center = view.center
         
         NSLayoutConstraint.activate([
-            textStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            textStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            textStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            textStackView.heightAnchor.constraint(equalToConstant: view.frame.height/12)
+            lblAppcent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            lblAppcent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            lblAppcent.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            lblAppcent.heightAnchor.constraint(equalToConstant: view.frame.height/12)
         ])
     }
     

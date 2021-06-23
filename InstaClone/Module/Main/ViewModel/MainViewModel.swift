@@ -27,17 +27,18 @@ class MainViewModel {
     func fetchPhotos() {
         fetchStatus = .fetching
         NetworkManager.shared.fetchData(numberOfPage: page) { [weak self] (result) in
+            guard let self = self else { return }
             
             switch result {
             case .success(let response):
-                self?.photoURLs.append(contentsOf: response.compactMap { $0.urls.regular })
+                self.photoURLs.append(contentsOf: response.compactMap { $0.urls.regular })
                 
-                self?.photosFetched?()
-                self?.fetchStatus = .idle
+                self.photosFetched?()
+                self.fetchStatus = .idle
                 
             case .failure(let error):
                 print(error)
-                self?.fetchStatus = .idle
+                self.fetchStatus = .idle
             }
         }
         
