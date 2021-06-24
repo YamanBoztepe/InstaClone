@@ -8,7 +8,6 @@
 import UIKit
 
 class MainViewModel {
-    
     private(set) var fetchStatus: PhotoFetchStatus = .idle {
         didSet {
             if fetchStatus == .fetching {
@@ -16,23 +15,19 @@ class MainViewModel {
             }
         }
     }
-    
     private(set) var photoURLs = [String]()
-    
     private var page = 0
-
     var photosFetched: (() -> Void)?
     
-    
     func fetchPhotos() {
+        let urlComponents = "photos/?page=\(page)&"
         fetchStatus = .fetching
-        NetworkManager.shared.fetchData(numberOfPage: page) { [weak self] (result) in
-            guard let self = self else { return }
-            
+        
+        NetworkManager.shared.getData(from: urlComponents, responseModel: Array<Photo>.self) { result in
             switch result {
             case .success(let response):
                 self.photoURLs.append(contentsOf: response.compactMap { $0.urls.regular })
-                
+
                 self.photosFetched?()
                 self.fetchStatus = .idle
                 
@@ -41,8 +36,6 @@ class MainViewModel {
                 self.fetchStatus = .idle
             }
         }
-        
-        
     }
     
     func fetchMorePhotosIfPossible() {

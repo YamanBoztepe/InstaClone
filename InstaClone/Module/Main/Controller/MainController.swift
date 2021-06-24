@@ -8,7 +8,6 @@
 import UIKit
 
 class MainController: UIViewController {
-    
     private var collectionView: UICollectionView!
     private let viewModel = MainViewModel()
     
@@ -89,7 +88,6 @@ extension MainController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        
         CGSize(width: view.frame.width, height: 30)
     }
     
@@ -104,7 +102,6 @@ extension MainController: UIScrollViewDelegate {
         
         if (currentPosition > collectionView.contentSize.height - scrollView.frame.height)
             && collectionView.contentSize.height > 0 {
-            
             viewModel.fetchMorePhotosIfPossible()
         }
     }

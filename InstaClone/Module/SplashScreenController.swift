@@ -8,24 +8,20 @@
 import UIKit
 
 class SplashScreenController: UIViewController {
-    
     private let imgInstagram: UIImageView = {
         let img = UIImageView()
         img.frame = .init(x: 0, y: 0, width: 150, height: 150)
         img.image = UIImage(named: "instagramLogo")
         return img
     }()
-    
     private let mainController: UINavigationController = {
         let nv = UINavigationController(rootViewController: MainController())
         nv.modalTransitionStyle = .crossDissolve
         nv.modalPresentationStyle = .fullScreen
         return nv
     }()
-    
     private let lblAppcent: UILabel = {
         let lbl = UILabel()
-        
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
@@ -46,8 +42,8 @@ class SplashScreenController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setLayout()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.animate()
         }
@@ -55,7 +51,6 @@ class SplashScreenController: UIViewController {
     
     
     private func animate() {
-        
         let size = view.frame.size.width * 2
         let center = view.center
         
@@ -73,7 +68,6 @@ class SplashScreenController: UIViewController {
                 self.startApp()
             }
         }
-
     }
     
     private func startApp() {

@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 class PhotoCell: UICollectionViewCell {
-    
     static let identifier = "PhotoCell"
     
     private let imgPhoto: UIImageView = {
@@ -23,24 +22,20 @@ class PhotoCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addSubview(imgPhoto)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         imgPhoto.image = nil
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         setLayout()
     }
     
     private func setLayout() {
-        
         NSLayoutConstraint.activate([
             imgPhoto.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             imgPhoto.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
