@@ -1,46 +1,42 @@
 //
-//  MainController.swift
+//  PhotoResultsController.swift
 //  InstaClone
 //
-//  Created by Yaman Boztepe on 21.06.2021.
+//  Created by Yaman Boztepe on 28.06.2021.
 //
 
 import UIKit
 
-class MainController: UIViewController {
-    private var collectionView: UICollectionView!
-    private let viewModel = MainViewModel()
+
+class PhotoResultsController: BaseController {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    private var viewModel = PhotosViewModel()
+    var searchText = "" {
+        didSet {
+            viewModel.textToSearch = searchText
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setLayout()
-        viewModel.fetchPhotos()
-        updateUI()
-    }
-    
-    // MARK: - Setting UI
-    private func setLayout() {
         setCollectionView()
-        view.addSubview(collectionView)
-        collectionView.frame = view.bounds
+        updateUI()
         
-        title = "Photos"
+        navigationController?.navigationBar.isHidden = false
     }
     
+    // MARK: - Layout
     private func setCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: view.frame.width, height: view.frame.height/2.5)
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
+        layout.itemSize = .init(width: view.frame.width, height: view.frame.height/3)
+        collectionView.collectionViewLayout = layout
         
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: PhotoCell.identifier)
+        collectionView.register(UINib(nibName: "FooterCell", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCell.identifier)
         
-        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.identifier)
-        collectionView.register(FooterSpinnerView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterSpinnerView.identifier)
-        
-        collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     private func updateUI() {
@@ -53,12 +49,14 @@ class MainController: UIViewController {
         }
     }
     
+    @objc private func pressedaaa() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
-
-
-// MARK: - TableView
-extension MainController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+// MARK: - CollectionView
+extension PhotoResultsController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.photoURLs.count
@@ -66,21 +64,21 @@ extension MainController: UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
-        
-        let photoURL = viewModel.photoURLs[indexPath.row]
-        cell.configure(with: photoURL)
-        
+        cell.configure(with: viewModel.photoURLs[indexPath.row])
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pressedaaa)))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind == UICollectionView.elementKindSectionFooter {
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterSpinnerView.identifier, for: indexPath) as? FooterSpinnerView else { return UICollectionReusableView() }
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterCell.identifier, for: indexPath) as? FooterCell else { return UICollectionReusableView() }
             
             if viewModel.photoURLs.count > 0 {
                 footer.spinner.startAnimating()
             }
+            footer.configure(with: viewModel)
+            
             return footer
         }
         
@@ -93,16 +91,15 @@ extension MainController: UICollectionViewDataSource, UICollectionViewDelegate, 
     
 }
 
-
 // MARK: - ScrollView
-extension MainController: UIScrollViewDelegate {
+extension PhotoResultsController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPosition = scrollView.contentOffset.y
         
         if (currentPosition > collectionView.contentSize.height - scrollView.frame.height)
             && collectionView.contentSize.height > 0 {
-            viewModel.fetchMorePhotosIfPossible()
+            viewModel.textToSearch = searchText
         }
     }
 }

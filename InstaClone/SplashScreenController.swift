@@ -14,12 +14,6 @@ class SplashScreenController: UIViewController {
         img.image = UIImage(named: "instagramLogo")
         return img
     }()
-    private let mainController: UINavigationController = {
-        let nv = UINavigationController(rootViewController: MainController())
-        nv.modalTransitionStyle = .crossDissolve
-        nv.modalPresentationStyle = .fullScreen
-        return nv
-    }()
     private let lblAppcent: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -64,14 +58,16 @@ class SplashScreenController: UIViewController {
         UIView.animate(withDuration: 1) { [weak self] in
             guard let self = self else { return }
             self.imgInstagram.alpha = 0
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.startApp()
-            }
+        } completion: { _ in
+            self.startApp()
         }
     }
     
     private func startApp() {
-        self.present(self.mainController, animated: true)
+        let storyboard = UIStoryboard(name: "SearchPhotos", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "SearchPhotosController")
+        navigationController?.pushViewController(vc, animated: false)
+        UIApplication.shared.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
     }
     
     private func setLayout() {
@@ -79,6 +75,7 @@ class SplashScreenController: UIViewController {
         
         view.backgroundColor = .black
         imgInstagram.center = view.center
+        navigationController?.navigationBar.isHidden = true
         
         NSLayoutConstraint.activate([
             lblAppcent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),

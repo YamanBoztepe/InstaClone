@@ -8,6 +8,11 @@
 import Foundation
 
 struct Photo: Decodable {
+    let total: Int
+    let results: [PhotoDetails]
+}
+
+struct PhotoDetails: Decodable {
     let createdAt: String
     let urls: ImageUrl
     let likes: Int
