@@ -12,7 +12,7 @@ class SearchPhotosController: BaseController {
     @IBOutlet weak var txtSearchBar: UITextField!
     @IBOutlet weak var lblErrorMessage: UILabel!
     
-    private let viewModel = PhotosViewModel()
+    private let viewModel = SearchPhotosViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,28 +58,27 @@ extension SearchPhotosController: UITextFieldDelegate {
         textField.resignFirstResponder()
         lblErrorMessage.text = ""
         
-        if let text = textField.text, text.count > 0 {
-            startLoading()
-            if viewModel.photoURLs.count > 0 { viewModel.removeAllPhotos() }
-            viewModel.textToSearch = text
-            viewModel.photosFetched  = { [weak self] in
-                guard let self = self else { return }
-                if self.viewModel.photoURLs.count > 0 {
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self, let vc = self.storyboard?.instantiateViewController(identifier: "PhotoResultsController") as? PhotoResultsController else { return }
-                        vc.searchText = text
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                } else {
-                    self.lblErrorMessage.text = "We can't find photos that you want :("
-                }
-                self.stopLoading()
-            }
-        } else {
-            lblErrorMessage.text = "Please type something"
-            stopLoading()
-            return true
+        do {
+            try viewModel.check(text: textField.text)
+            
+        } catch SearchTextError.NilText {
+            lblErrorMessage.text = SearchTextError.NilText.rawValue
+            return false
+            
+        } catch SearchTextError.InvalidText {
+            lblErrorMessage.text = SearchTextError.InvalidText.rawValue
+            return false
+            
+        } catch {
+            lblErrorMessage.text = "We don't understand about what you write"
+            return false
+            
         }
+        
+        let storyboard = UIStoryboard(name: "PhotoResults", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "PhotoResultsController") as? PhotoResultsController else { return false }
+        vc.searchText = textField.text!
+        self.navigationController?.pushViewController(vc, animated: true)
         return true
     }
 }

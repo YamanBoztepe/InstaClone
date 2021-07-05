@@ -22,7 +22,7 @@ class NetworkManager {
         guard let url = URL(string: URLConstants.baseURL +
                                 "\(urlComponents)" +
                                 "client_id=\(URLConstants.apiKey)") else { return }
-        print(url)
+        
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(error))

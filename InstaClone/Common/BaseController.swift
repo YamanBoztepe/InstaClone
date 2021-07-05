@@ -14,7 +14,11 @@ class BaseController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addSpinner()
+    }
+    
+    // MARK: - Layout
+    private func addSpinner() {
         if spinner == nil {
             spinner = UIActivityIndicatorView()
             spinner.translatesAutoresizingMaskIntoConstraints = false

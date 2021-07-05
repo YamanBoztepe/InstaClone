@@ -64,10 +64,13 @@ class SplashScreenController: UIViewController {
     }
     
     private func startApp() {
-        let storyboard = UIStoryboard(name: "SearchPhotos", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "SearchPhotosController")
-        navigationController?.pushViewController(vc, animated: false)
-        UIApplication.shared.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+        let didWalkthroughAppear = UserDefaults.standard.bool(forKey: "didWalkthroughAppear")
+        
+        if didWalkthroughAppear {
+            navigationController?.pushViewController(viewControllerID: "SearchPhotosController", in: "SearchPhotos", setAsRoot: true)
+        } else {
+            navigationController?.pushViewController(viewControllerID: "WalkthroughViewController", in: "Walkthrough")
+        }
     }
     
     private func setLayout() {

@@ -11,7 +11,7 @@ import UIKit
 class PhotoResultsController: BaseController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var viewModel = PhotosViewModel()
+    private var viewModel = PhotoResultsViewModel()
     var searchText = "" {
         didSet {
             viewModel.textToSearch = searchText
@@ -21,9 +21,8 @@ class PhotoResultsController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
+        setLayout()
         updateUI()
-        
-        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Layout
@@ -39,18 +38,42 @@ class PhotoResultsController: BaseController {
         collectionView.dataSource = self
     }
     
+    private func setLayout() {
+        navigationController?.navigationBar.isHidden = false
+        title = searchText
+        navigationController?.navigationBar.barStyle = .black
+    }
+    
     private func updateUI() {
-        viewModel.photosFetched = { [weak self] in
+        viewModel.fetchCompleted = { [weak self] in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
+        showError()
     }
     
-    @objc private func pressedaaa() {
-        navigationController?.popViewController(animated: true)
+    private func showError() {
+        viewModel.errorHandler = { [weak self] error in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.setAlert(with: error)
+            }
+        }
+    }
+    
+    private func setAlert(with error: Error) {
+        let alert = UIAlertController(title: "We can't show photos :(",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.navigationController?.popViewController(animated: true)
+        }))
+        present(alert, animated: true)
     }
     
 }
@@ -65,7 +88,6 @@ extension PhotoResultsController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
         cell.configure(with: viewModel.photoURLs[indexPath.row])
-        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pressedaaa)))
         return cell
     }
     
