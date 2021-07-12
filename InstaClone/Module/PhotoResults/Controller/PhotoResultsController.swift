@@ -11,7 +11,7 @@ import UIKit
 class PhotoResultsController: BaseController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var viewModel = PhotoResultsViewModel()
+    private var viewModel = PhotosViewModel()
     var searchText = "" {
         didSet {
             viewModel.textToSearch = searchText
@@ -87,7 +87,7 @@ extension PhotoResultsController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
-        cell.configure(with: viewModel.photoURLs[indexPath.row])
+        cell.configure(with: viewModel.photoURLs[indexPath.row], at: indexPath.row)
         return cell
     }
     

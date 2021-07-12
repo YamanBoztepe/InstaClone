@@ -18,7 +18,7 @@ class FooterCell: UICollectionViewCell {
         
     }
     
-    func configure(with model: PhotoResultsViewModel) {
+    func configure(with model: PhotosViewModel) {
         if model.photosFinished {
             spinner.stopAnimating()
             lblPhotosFinished.isHidden = false

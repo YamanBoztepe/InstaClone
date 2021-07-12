@@ -18,4 +18,12 @@ extension UINavigationController {
         }
         
     }
+    
+    func pushViewController(_ viewController: UIViewController, setAsRoot: Bool = false) {
+        self.pushViewController(viewController, animated: false)
+        if setAsRoot {
+            UIApplication.shared.windows.first?.rootViewController = Self(rootViewController: viewController)
+        }
+        
+    }
 }

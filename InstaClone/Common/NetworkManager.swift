@@ -16,12 +16,13 @@ class NetworkManager {
     //MARK: - API Calling
     typealias NetworkResult<U> = (Result<U,Error>) -> Void where U: Decodable
     
-    func getData<T: Decodable>(from urlComponents: String = "", responseModel: T.Type ,
+    func getData<T: Decodable>(from urlComponents: String, responseModel: T.Type ,
                                completionHandler completion: @escaping NetworkResult<T>) {
         
         guard let url = URL(string: URLConstants.baseURL +
                                 "\(urlComponents)" +
                                 "client_id=\(URLConstants.apiKey)") else { return }
+        print("URL: \(url.absoluteString)")
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {

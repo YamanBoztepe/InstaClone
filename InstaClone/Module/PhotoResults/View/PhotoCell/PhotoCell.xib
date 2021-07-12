@@ -22,14 +22,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="436" height="285"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4UT-Qm-mEu">
+                        <rect key="frame" x="0.0" y="0.0" width="436" height="290"/>
+                        <connections>
+                            <action selector="cellPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="IJf-MG-Dgb"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="zyn-n9-7H5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4vW-WD-E5Z"/>
                 <constraint firstAttribute="bottom" secondItem="zyn-n9-7H5" secondAttribute="bottom" constant="5" id="FlG-68-9lf"/>
+                <constraint firstItem="4UT-Qm-mEu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Mvq-Kx-zWw"/>
+                <constraint firstAttribute="bottom" secondItem="4UT-Qm-mEu" secondAttribute="bottom" id="NEI-Xu-bZI"/>
                 <constraint firstItem="zyn-n9-7H5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vep-Iq-9dr"/>
                 <constraint firstAttribute="trailing" secondItem="zyn-n9-7H5" secondAttribute="trailing" id="bgb-31-L46"/>
+                <constraint firstItem="4UT-Qm-mEu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bpN-zH-Bbx"/>
+                <constraint firstAttribute="trailing" secondItem="4UT-Qm-mEu" secondAttribute="trailing" id="fXv-ay-Lih"/>
             </constraints>
             <size key="customSize" width="436" height="290"/>
             <connections>

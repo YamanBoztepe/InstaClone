@@ -59,7 +59,7 @@ extension WalkthroughPageViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if viewModel.isWalkthroughsEnd && scrollView.contentOffset.x > view.frame.maxX {
             UserDefaults.standard.setValue(true, forKey: "didWalkthroughAppear")
-            self.navigationController?.pushViewController(viewControllerID: "SearchPhotosController", in: "SearchPhotos", setAsRoot: true)
+            navigationController?.pushViewController(TabBarController(), setAsRoot: true)
         }
     }
 }

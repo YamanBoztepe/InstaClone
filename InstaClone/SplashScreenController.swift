@@ -67,7 +67,7 @@ class SplashScreenController: UIViewController {
         let didWalkthroughAppear = UserDefaults.standard.bool(forKey: "didWalkthroughAppear")
         
         if didWalkthroughAppear {
-            navigationController?.pushViewController(viewControllerID: "SearchPhotosController", in: "SearchPhotos", setAsRoot: true)
+            navigationController?.pushViewController(TabBarController(), setAsRoot: true)
         } else {
             navigationController?.pushViewController(viewControllerID: "WalkthroughViewController", in: "Walkthrough")
         }

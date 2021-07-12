@@ -12,6 +12,10 @@ struct Photo: Decodable {
     let results: [PhotoDetails]
 }
 
+struct RandomPhoto: Decodable {
+    let results: PhotoDetails
+}
+
 struct PhotoDetails: Decodable {
     let createdAt: String
     let urls: ImageUrl

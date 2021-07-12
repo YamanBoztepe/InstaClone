@@ -7,9 +7,10 @@
 
 import UIKit
 
-class PhotoResultsViewModel: BaseViewModel {
+class PhotosViewModel: BaseViewModel {
     private(set) var fetchStatus: PhotoFetchStatus = .idle
     private(set) var photoURLs = [String]()
+    private(set) var photoInfos = [PhotoDetails]()
     private(set) var photosFinished = false
     private var page = 1
     var textToSearch: String? {
@@ -18,7 +19,7 @@ class PhotoResultsViewModel: BaseViewModel {
         }
     }
     
-    
+    // Fetch Photo for specific search
     private func fetchPhotos(from text: String) {
         if fetchStatus != .fetching {
             let urlComponents = "search/photos/?page=\(page)&query=\(text)&"
@@ -41,6 +42,32 @@ class PhotoResultsViewModel: BaseViewModel {
                         self.errorHandler?(error)
                         self.fetchStatus = .idle
                     }
+                }
+            }
+        }
+    }
+    
+    // Fetch Random Photo
+    func fetchPhotos() {
+        if fetchStatus != .fetching {
+            let urlComponents = "photos?page=\(page)&"
+            fetchStatus = .fetching
+            page += 1
+            
+            NetworkManager.shared.getData(from: urlComponents, responseModel: [PhotoDetails].self) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let response):
+                    self.photoURLs.append(contentsOf: response.compactMap { $0.urls.regular })
+                    self.photoInfos.append(contentsOf: response)
+                    
+                    self.fetchCompleted?()
+                    self.fetchStatus = .idle
+                    
+                case .failure(let error):
+                    self.errorHandler?(error)
+                    self.fetchStatus = .idle
                 }
             }
         }

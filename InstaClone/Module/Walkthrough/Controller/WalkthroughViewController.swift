@@ -26,7 +26,7 @@ class WalkthroughViewController: UIViewController {
     
     @IBAction func skipButtonPressed(_ sender: Any) {
         UserDefaults.standard.setValue(true, forKey: "didWalkthroughAppear")
-        navigationController?.pushViewController(viewControllerID: "SearchPhotosController", in: "SearchPhotos", setAsRoot: true)
+        navigationController?.pushViewController(TabBarController(), setAsRoot: true)
     }
     
 }
