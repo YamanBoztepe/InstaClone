@@ -10,5 +10,4 @@ import Foundation
 class BaseViewModel {
     var errorHandler: ((Error) -> Void)?
     var fetchCompleted: (() -> Void)?
-    
 }

@@ -84,7 +84,7 @@ class SplashScreenController: UIViewController {
             lblAppcent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             lblAppcent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             lblAppcent.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            lblAppcent.heightAnchor.constraint(equalToConstant: view.frame.height/12)
+            lblAppcent.heightAnchor.constraint(equalToConstant: view.frame.height/10)
         ])
     }
     

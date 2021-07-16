@@ -29,6 +29,5 @@ struct ImageUrl: Decodable {
 }
 
 struct User: Decodable {
-    let name: String
-    let portfolioUrl: String?
+    let username: String
 }

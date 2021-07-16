@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class RandomPhotosController: BaseController {
     private let viewModel = PhotosViewModel()
@@ -148,13 +147,11 @@ extension RandomPhotosController: UIScrollViewDelegate {
 // MARK: - PhotoCellDelegate
 extension RandomPhotosController: PhotoCellDelegate {
     func cellPressed(numberOfRow: Int) {
-        let storyboard = UIStoryboard(name: "PhotoDetails", bundle: nil)
-        if let vc = storyboard.instantiateViewController(identifier: "PhotoDetailsController") as? PhotoDetailsController {
-            guard let url = URL(string: viewModel.photoURLs[numberOfRow]) else { return }
-            vc.loadViewIfNeeded()
-            vc.imgPhotoDetail.kf.setImage(with: url)
-            vc.lblNameOfPhotoOwner.text = "Published by \(viewModel.photoInfos[numberOfRow].user.name)"
-            navigationController?.pushViewController(vc, animated: true)
+        let storyboard = UIStoryboard(name: "UserDetails", bundle: nil)
+        if let vc = storyboard.instantiateViewController(identifier: "UserDetailsController") as? UserDetailsController {
+            let userName = viewModel.photoInfos[numberOfRow].user.username
+            vc.userName = userName
+            present(vc, animated: true)
         }
     }
 }
