@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0A6C6026A49DB2009285EA /* ICTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A6C5F26A49DB2009285EA /* ICTextField.swift */; };
+		1C0A6C6226A49F26009285EA /* ICTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A6C6126A49F26009285EA /* ICTextField.xib */; };
+		1C0A6C6526A4A5B1009285EA /* ICOptionalChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A6C6426A4A5B1009285EA /* ICOptionalChoice.swift */; };
+		1C0A6C6726A4A8AF009285EA /* ICOptionalChoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A6C6626A4A8AF009285EA /* ICOptionalChoice.xib */; };
+		1C0A6C6E26A4AB9C009285EA /* ICOptionalChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A6C6C26A4AB9C009285EA /* ICOptionalChoiceCell.swift */; };
+		1C0A6C6F26A4AB9C009285EA /* ICOptionalChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A6C6D26A4AB9C009285EA /* ICOptionalChoiceCell.xib */; };
+		1C0A6C7326A4C2FB009285EA /* ICBirthDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A6C7226A4C2FB009285EA /* ICBirthDate.swift */; };
+		1C0A6C7526A4C311009285EA /* ICBirthDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A6C7426A4C311009285EA /* ICBirthDate.xib */; };
 		1C0D800E26908CF000ABB040 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0D800D26908CF000ABB040 /* Walkthrough.storyboard */; };
 		1C0D801026909AF700ABB040 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D800F26909AF700ABB040 /* WalkthroughContentViewController.swift */; };
+		1C21634626A85F300026E734 /* ICSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C21634526A85F300026E734 /* ICSelection.swift */; };
+		1C21634826A85F890026E734 /* ICSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C21634726A85F890026E734 /* ICSelection.xib */; };
+		1C42614E26A883D900A860AD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C42614D26A883D900A860AD /* SignUpViewModel.swift */; };
 		1C521FC026824D3C000AA39F /* SplashScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C521FBF26824D3C000AA39F /* SplashScreenController.swift */; };
 		1C71A3DF268BC5B20093A662 /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71A3DD268BC5B20093A662 /* FooterCell.swift */; };
 		1C71A3E0268BC5B20093A662 /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C71A3DE268BC5B20093A662 /* FooterCell.xib */; };
@@ -40,6 +51,10 @@
 		1CDCF5AC269AE8230053218C /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDCF5AB269AE8230053218C /* TabBarViewModel.swift */; };
 		1CDCF5B3269AF9030053218C /* RandomPhotos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CDCF5B2269AF9030053218C /* RandomPhotos.storyboard */; };
 		1CDCF5B5269AF9210053218C /* RandomPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDCF5B4269AF9210053218C /* RandomPhotosController.swift */; };
+		1CDFF27F26A9E1480034352D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDFF27E26A9E1480034352D /* City.swift */; };
+		1CE229D426AAFF21001A561B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE229D326AAFF21001A561B /* Country.swift */; };
+		1CE229D726AB461B001A561B /* ICButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE229D626AB461B001A561B /* ICButton.swift */; };
+		1CE229D926AB4637001A561B /* ICButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE229D826AB4637001A561B /* ICButton.xib */; };
 		1CE4E6C9269FED740095EA14 /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E6C8269FED740095EA14 /* UserDetailsController.swift */; };
 		1CE4E6CB269FED910095EA14 /* UserDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE4E6CA269FED910095EA14 /* UserDetails.storyboard */; };
 		1CF226D5269FF6E100C7E26F /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF226D3269FF6E100C7E26F /* UserDetailCell.swift */; };
@@ -53,8 +68,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0A6C5F26A49DB2009285EA /* ICTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextField.swift; sourceTree = "<group>"; };
+		1C0A6C6126A49F26009285EA /* ICTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICTextField.xib; sourceTree = "<group>"; };
+		1C0A6C6426A4A5B1009285EA /* ICOptionalChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICOptionalChoice.swift; sourceTree = "<group>"; };
+		1C0A6C6626A4A8AF009285EA /* ICOptionalChoice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICOptionalChoice.xib; sourceTree = "<group>"; };
+		1C0A6C6C26A4AB9C009285EA /* ICOptionalChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICOptionalChoiceCell.swift; sourceTree = "<group>"; };
+		1C0A6C6D26A4AB9C009285EA /* ICOptionalChoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICOptionalChoiceCell.xib; sourceTree = "<group>"; };
+		1C0A6C7226A4C2FB009285EA /* ICBirthDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICBirthDate.swift; sourceTree = "<group>"; };
+		1C0A6C7426A4C311009285EA /* ICBirthDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICBirthDate.xib; sourceTree = "<group>"; };
 		1C0D800D26908CF000ABB040 /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		1C0D800F26909AF700ABB040 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		1C21634526A85F300026E734 /* ICSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICSelection.swift; sourceTree = "<group>"; };
+		1C21634726A85F890026E734 /* ICSelection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICSelection.xib; sourceTree = "<group>"; };
+		1C42614D26A883D900A860AD /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		1C521FBF26824D3C000AA39F /* SplashScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenController.swift; sourceTree = "<group>"; };
 		1C71A3DD268BC5B20093A662 /* FooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = "<group>"; };
 		1C71A3DE268BC5B20093A662 /* FooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterCell.xib; sourceTree = "<group>"; };
@@ -88,6 +114,10 @@
 		1CDCF5AB269AE8230053218C /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		1CDCF5B2269AF9030053218C /* RandomPhotos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RandomPhotos.storyboard; sourceTree = "<group>"; };
 		1CDCF5B4269AF9210053218C /* RandomPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotosController.swift; sourceTree = "<group>"; };
+		1CDFF27E26A9E1480034352D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		1CE229D326AAFF21001A561B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		1CE229D626AB461B001A561B /* ICButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICButton.swift; sourceTree = "<group>"; };
+		1CE229D826AB4637001A561B /* ICButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICButton.xib; sourceTree = "<group>"; };
 		1CE4E6C8269FED740095EA14 /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
 		1CE4E6CA269FED910095EA14 /* UserDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetails.storyboard; sourceTree = "<group>"; };
 		1CF226D3269FF6E100C7E26F /* UserDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
@@ -111,6 +141,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C0A6C5E26A49D9C009285EA /* ICTextField */ = {
+			isa = PBXGroup;
+			children = (
+				1C0A6C5F26A49DB2009285EA /* ICTextField.swift */,
+				1C0A6C6126A49F26009285EA /* ICTextField.xib */,
+			);
+			path = ICTextField;
+			sourceTree = "<group>";
+		};
+		1C0A6C6326A4A57F009285EA /* ICOptionalChoice */ = {
+			isa = PBXGroup;
+			children = (
+				1C0A6C6B26A4AB86009285EA /* ICOptionalChoiceCell */,
+				1C0A6C6426A4A5B1009285EA /* ICOptionalChoice.swift */,
+				1C0A6C6626A4A8AF009285EA /* ICOptionalChoice.xib */,
+			);
+			path = ICOptionalChoice;
+			sourceTree = "<group>";
+		};
+		1C0A6C6B26A4AB86009285EA /* ICOptionalChoiceCell */ = {
+			isa = PBXGroup;
+			children = (
+				1C0A6C6C26A4AB9C009285EA /* ICOptionalChoiceCell.swift */,
+				1C0A6C6D26A4AB9C009285EA /* ICOptionalChoiceCell.xib */,
+			);
+			path = ICOptionalChoiceCell;
+			sourceTree = "<group>";
+		};
+		1C0A6C7026A4C282009285EA /* ICCustomView */ = {
+			isa = PBXGroup;
+			children = (
+				1CE229D526AB4607001A561B /* ICButton */,
+				1C0A6C7626A4DEB1009285EA /* ICSelection */,
+				1C0A6C7126A4C2AF009285EA /* ICBirthDate */,
+				1C0A6C6326A4A57F009285EA /* ICOptionalChoice */,
+				1C0A6C5E26A49D9C009285EA /* ICTextField */,
+			);
+			path = ICCustomView;
+			sourceTree = "<group>";
+		};
+		1C0A6C7126A4C2AF009285EA /* ICBirthDate */ = {
+			isa = PBXGroup;
+			children = (
+				1C0A6C7226A4C2FB009285EA /* ICBirthDate.swift */,
+				1C0A6C7426A4C311009285EA /* ICBirthDate.xib */,
+			);
+			path = ICBirthDate;
+			sourceTree = "<group>";
+		};
+		1C0A6C7626A4DEB1009285EA /* ICSelection */ = {
+			isa = PBXGroup;
+			children = (
+				1C21634526A85F300026E734 /* ICSelection.swift */,
+				1C21634726A85F890026E734 /* ICSelection.xib */,
+			);
+			path = ICSelection;
+			sourceTree = "<group>";
+		};
 		1C0D800C26908CCC00ABB040 /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +475,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1CE229D526AB4607001A561B /* ICButton */ = {
+			isa = PBXGroup;
+			children = (
+				1CE229D626AB461B001A561B /* ICButton.swift */,
+				1CE229D826AB4637001A561B /* ICButton.xib */,
+			);
+			path = ICButton;
+			sourceTree = "<group>";
+		};
 		1CE4E6C3269FED340095EA14 /* UserDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +560,7 @@
 		1CF226D8269FFBA800C7E26F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1C0A6C7026A4C282009285EA /* ICCustomView */,
 				1CF226DC269FFBC700C7E26F /* Storyboard */,
 			);
 			path = View;
@@ -479,6 +577,7 @@
 		1CF226DA269FFBB700C7E26F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1C42614D26A883D900A860AD /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -486,6 +585,8 @@
 		1CF226DB269FFBBF00C7E26F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1CDFF27E26A9E1480034352D /* City.swift */,
+				1CE229D326AAFF21001A561B /* Country.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -569,15 +670,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC90E752689E88000632FA2 /* PhotoCell.xib in Resources */,
+				1C0A6C6226A49F26009285EA /* ICTextField.xib in Resources */,
+				1C21634826A85F890026E734 /* ICSelection.xib in Resources */,
 				1CAD05E126811765002A61C1 /* LaunchScreen.storyboard in Resources */,
+				1C0A6C6726A4A8AF009285EA /* ICOptionalChoice.xib in Resources */,
 				1CF226E0269FFC2900C7E26F /* SignUp.storyboard in Resources */,
 				1C0D800E26908CF000ABB040 /* Walkthrough.storyboard in Resources */,
 				1CA05E9E268F66C4003F7F30 /* PhotoResults.storyboard in Resources */,
+				1CE229D926AB4637001A561B /* ICButton.xib in Resources */,
 				1CDCF5B3269AF9030053218C /* RandomPhotos.storyboard in Resources */,
+				1C0A6C6F26A4AB9C009285EA /* ICOptionalChoiceCell.xib in Resources */,
 				1CAD05DE26811765002A61C1 /* Assets.xcassets in Resources */,
 				1CAD05DC2681175A002A61C1 /* SearchPhotos.storyboard in Resources */,
 				1CE4E6CB269FED910095EA14 /* UserDetails.storyboard in Resources */,
 				1CF226D6269FF6E100C7E26F /* UserDetailCell.xib in Resources */,
+				1C0A6C7526A4C311009285EA /* ICBirthDate.xib in Resources */,
 				1C71A3E0268BC5B20093A662 /* FooterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,12 +697,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CDCF5AC269AE8230053218C /* TabBarViewModel.swift in Sources */,
+				1CE229D726AB461B001A561B /* ICButton.swift in Sources */,
+				1C0A6C6026A49DB2009285EA /* ICTextField.swift in Sources */,
 				1CB082E82691D14F004CC818 /* Extensions+UINavigationController.swift in Sources */,
+				1C0A6C7326A4C2FB009285EA /* ICBirthDate.swift in Sources */,
+				1CE229D426AAFF21001A561B /* Country.swift in Sources */,
 				1CAD05FE26813802002A61C1 /* PhotosViewModel.swift in Sources */,
 				1C800B102689235300491FC0 /* Extensions+UIView.swift in Sources */,
 				1CC90E702689E07000632FA2 /* PhotoResultsController.swift in Sources */,
 				1C8D4ACE2690A219006C7217 /* WalkthroughViewController.swift in Sources */,
 				1CA05EA0268F685B003F7F30 /* SearchTextError.swift in Sources */,
+				1CDFF27F26A9E1480034352D /* City.swift in Sources */,
+				1C0A6C6E26A4AB9C009285EA /* ICOptionalChoiceCell.swift in Sources */,
+				1C0A6C6526A4A5B1009285EA /* ICOptionalChoice.swift in Sources */,
 				1C800B0B26890EB600491FC0 /* BaseController.swift in Sources */,
 				1CC90E742689E88000632FA2 /* PhotoCell.swift in Sources */,
 				1C71A3DF268BC5B20093A662 /* FooterCell.swift in Sources */,
@@ -608,6 +722,7 @@
 				1CDCF5A5269ADFF90053218C /* TabBarController.swift in Sources */,
 				1C8D4AD62690BB26006C7217 /* WalkthroughContentModel.swift in Sources */,
 				1CAD05F42681298C002A61C1 /* NetworkManager.swift in Sources */,
+				1C42614E26A883D900A860AD /* SignUpViewModel.swift in Sources */,
 				1C8D4AD42690BAD8006C7217 /* WalkthroughPageViewModel.swift in Sources */,
 				1CF226DE269FFBEF00C7E26F /* SignUpController.swift in Sources */,
 				1CF226E926A097F400C7E26F /* SocialMediaDetails.swift in Sources */,
@@ -615,6 +730,7 @@
 				1C0D801026909AF700ABB040 /* WalkthroughContentViewController.swift in Sources */,
 				1CDCF5B5269AF9210053218C /* RandomPhotosController.swift in Sources */,
 				1CF226E426A077AA00C7E26F /* UserDetails.swift in Sources */,
+				1C21634626A85F300026E734 /* ICSelection.swift in Sources */,
 				1C800B0D2689144900491FC0 /* SearchPhotosController.swift in Sources */,
 				1CF226E226A06A1B00C7E26F /* UserDetailsViewModel.swift in Sources */,
 				1CAD05D52681175A002A61C1 /* AppDelegate.swift in Sources */,

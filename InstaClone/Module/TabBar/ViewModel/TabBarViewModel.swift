@@ -15,7 +15,10 @@ class TabBarViewModel {
                                   title: "Search"),
         OrganizedControllersModel(storyboardID: "RandomPhotos",
                                   viewControllerID: "RandomPhotosController",
-                                  title: "Random Photos")
+                                  title: "Random Photos"),
+        OrganizedControllersModel(storyboardID: "SignUp",
+                                  viewControllerID: "SignUpController",
+                                  title: "Sign Up")
     ]
     
     // MARK: - Create ViewControllers

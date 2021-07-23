@@ -18,7 +18,7 @@ class SearchPhotosController: BaseController {
         super.viewDidLoad()
         animateTexts()
         setTextField()
-        addAttributesToView()
+        addKeyboardBehaviours()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,16 +39,10 @@ class SearchPhotosController: BaseController {
         txtSearchBar.delegate = self
     }
     
-    private func addAttributesToView() {
+    private func addKeyboardBehaviours() {
+        view.dismissKeyboardWhenViewTapped()
         view.keyboardShowObserver()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewPressed))
-        view.addGestureRecognizer(tapGesture)
     }
-    @objc private func viewPressed() {
-        view.endEditing(true)
-    }
-    
 }
 
 // MARK: - Textfield

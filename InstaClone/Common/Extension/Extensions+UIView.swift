@@ -32,4 +32,19 @@ extension UIView {
             self.frame.origin.y += distanceY/2
         }
     }
+    
+    func dismissKeyboardWhenViewTapped() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewPressed))
+        addGestureRecognizer(tapGesture)
+    }
+    @objc private func viewPressed() {
+        endEditing(true)
+    }
+    
+    // MARK: - XIB Actions
+    func createNibView(nibName: String) {
+        guard let nibView = Bundle.main.loadNibNamed(nibName, owner: self)?.first as? UIView else { return }
+        nibView.frame = bounds
+        addSubview(nibView)
+    }
 }
