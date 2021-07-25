@@ -16,7 +16,7 @@ class TabBarController: UITabBarController {
         setControllers()
         setTabBarLayout()
     }
-
+    
     private func setControllers() {
         setViewControllers(viewModel.createTabControllers(), animated: true)
     }
@@ -24,6 +24,11 @@ class TabBarController: UITabBarController {
     private func setTabBarLayout() {
         tabBar.tintColor = .white
         tabBar.barTintColor = .black
+        viewModel.setTabBarIcons(for: tabBar)
+    }
+    
+    func changeTab(indexPath: Int) {
+        selectedIndex = indexPath
         viewModel.setTabBarIcons(for: tabBar)
     }
 }

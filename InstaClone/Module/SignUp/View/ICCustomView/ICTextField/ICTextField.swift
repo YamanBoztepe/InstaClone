@@ -16,7 +16,6 @@ class ICTextField: UIView {
     
     
     private(set) var userInput: String?
-    private var isMandatory = false
     
     override func awakeFromNib() {
         createNibView(nibName: "ICTextField")
@@ -45,11 +44,6 @@ class ICTextField: UIView {
     
     func setKeyboardType(_ keyboardType: UIKeyboardType) {
         txtUserInput.keyboardType = keyboardType
-    }
-    
-    // MARK: - Actions
-    func setAsMandatory() {
-        isMandatory = true
     }
 }
 

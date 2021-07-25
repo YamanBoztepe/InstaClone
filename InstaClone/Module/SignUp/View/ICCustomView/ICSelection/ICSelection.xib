@@ -29,8 +29,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please select a country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pba-L6-oWl">
-                    <rect key="frame" x="15" y="99.5" width="384" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="15" y="99.5" width="384" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" systemColor="systemRedColor"/>
                     <nil key="highlightedColor"/>
                 </label>

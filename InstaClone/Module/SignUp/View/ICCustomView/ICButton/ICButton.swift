@@ -26,9 +26,9 @@ class ICButton: UIView {
     private func setLayout() {
         btnSignUp.layer.cornerRadius = 10
         
-        btnSignUp.layer.shadowColor = UIColor.black.cgColor
+        btnSignUp.layer.shadowColor = UIColor.darkGray.cgColor
         btnSignUp.layer.shadowRadius = 10
-        btnSignUp.layer.shadowOffset = .init(width: 15, height: 15)
+        btnSignUp.layer.shadowOffset = .init(width: 10, height: 10)
         btnSignUp.layer.shadowOpacity = 1
     }
     

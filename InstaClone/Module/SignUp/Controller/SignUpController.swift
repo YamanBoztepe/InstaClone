@@ -12,6 +12,7 @@ class SignUpController: BaseController {
     @IBOutlet weak var txtUserSurname: ICTextField!
     @IBOutlet weak var txtUserEmail: ICTextField!
     @IBOutlet weak var txtPassword: ICTextField!
+    @IBOutlet weak var txtRepeatPassword: ICTextField!
     @IBOutlet weak var txtPhoneNumber: ICTextField!
     @IBOutlet weak var genderChoiceField: ICOptionalChoice!
     @IBOutlet weak var birthDateField: ICBirthDate!
@@ -26,6 +27,7 @@ class SignUpController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+        setDelegates()
         view.dismissKeyboardWhenViewTapped()
         viewModel.getCountries()
         setupPickerView()
@@ -39,21 +41,27 @@ class SignUpController: BaseController {
         txtUserEmail.setTitle("Email Address*")
         txtPassword.setTitle("Password*")
         txtPassword.enableSecureText()
+        txtRepeatPassword.setTitle("Repeat Password*")
+        txtRepeatPassword.enableSecureText()
         txtPhoneNumber.setTitle("Phone Number")
         txtPhoneNumber.setKeyboardType(.phonePad)
         genderChoiceField.setTitle("Gender")
         genderChoiceField.addOptions(["Male", "Female", "Others"])
-        
+    }
+    
+    private func setDelegates() {
         addressSelectionField.txtCity.delegate = self
         addressSelectionField.txtCountry.delegate = self
+        
+        btnSignUp.delegate = self
     }
     
     private func setupPickerView() {
-        [countryPickerView, cityPickerView].forEach { [weak self] picker in
-            guard let self = self else { return }
-            picker.delegate = self
-            picker.dataSource = self
-        }
+        countryPickerView.delegate = self
+        countryPickerView.dataSource = self
+        
+        cityPickerView.delegate = self
+        cityPickerView.dataSource = self
         
         addressSelectionField.txtCountry.inputView = countryPickerView
         addressSelectionField.txtCity.inputView = cityPickerView
@@ -69,8 +77,28 @@ class SignUpController: BaseController {
             }
         }
     }
+    
+    private func hideErrors() {
+        [txtUserName, txtUserSurname, txtUserEmail, txtPassword, txtRepeatPassword].forEach { $0.hideError() }
+        addressSelectionField.hideError()
+    }
+    
+    private func showFakeSuccessPopup() {
+        startLoading()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self = self else { return }
+            
+            let alert = UIAlertController(title: "Completed", message: "You have successfully registered", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: { _ in
+                self.stopLoading()
+            }))
+            self.present(alert, animated: true)
+        }
+    }
 }
 
+// MARK: - PickerView
 extension SignUpController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -114,5 +142,47 @@ extension SignUpController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
             addressSelectionField.hideError()
         }
         return true
+    }
+}
+
+// MARK: - ICButton
+extension SignUpController: ICButtonProtocol {
+        
+    func ICButtonTapped() {
+        hideErrors()
+        
+        let signUpForm = SignUpFormModel(firstName: txtUserName.userInput,
+                                         lastName: txtUserSurname.userInput,
+                                         email: txtUserEmail.userInput,
+                                         password: txtPassword.userInput,
+                                         repeatPassword: txtRepeatPassword.userInput,
+                                         address: Address(country: addressSelectionField.selectedCountry,
+                                                          city: addressSelectionField.selectedCity))
+        do {
+            try viewModel.processSignUp(form: signUpForm)
+            showFakeSuccessPopup()
+            
+        } catch SignUpError.firstNameIsNotValid(let error) {
+            txtUserName.showError(message: error)
+            
+        } catch SignUpError.lastNameIsNotValid(let error) {
+            txtUserSurname.showError(message: error)
+            
+        } catch SignUpError.emailIsNotValid(let error) {
+            txtUserEmail.showError(message: error)
+            
+        } catch SignUpError.passwordIsNotValid(let error) {
+            txtPassword.showError(message: error)
+            
+        } catch SignUpError.passwordsDoNotMatch(let error) {
+            txtPassword.showError(message: error)
+            txtRepeatPassword.showError(message: error)
+            
+        } catch SignUpError.addressIsNotValid(let error) {
+            addressSelectionField.showError(message: error)
+            
+        } catch {
+            print(error)
+        }
     }
 }

@@ -48,6 +48,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url,
+              let host = url.host,
+              let deepLink = DeepLink(rawValue: host) else { return }
+        
+        if let navVC = window?.rootViewController as? UINavigationController,
+           let tabBarController = navVC.viewControllers.filter({ $0 is TabBarController }).first as? TabBarController {
+            tabBarController.handleDeepLink(deepLink)
+        }
+    }
 }
 

@@ -17,69 +17,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-YC-R0j">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" directionalLockEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-YC-R0j">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zDk-nQ-9ms">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillProportionally" spacing="5" id="zDk-nQ-9ms">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1160"/>
+                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3y-g4-TRV" customClass="ICTextField" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="117.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4A4-Bb-1OZ" customClass="ICTextField" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="100.5" width="414" height="94.5"/>
+                                                <rect key="frame" x="0.0" y="122.5" width="414" height="117.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-9d-7H1" customClass="ICSelection" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="200" width="414" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="245" width="414" height="118.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDA-h6-kca" customClass="ICTextField" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="300.5" width="414" height="95"/>
+                                                <rect key="frame" x="0.0" y="368.5" width="414" height="118"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsp-YP-pKh" customClass="ICTextField" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="400.5" width="414" height="95"/>
+                                                <rect key="frame" x="0.0" y="491.5" width="414" height="118"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6co-Iw-OrF" customClass="ICTextField" customModule="InstaClone" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="614.5" width="414" height="118"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wrn-ty-rx0" customClass="ICTextField" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="500.5" width="414" height="95"/>
+                                                <rect key="frame" x="0.0" y="737.5" width="414" height="117.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpY-9v-PMG" customClass="ICOptionalChoice" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="600.5" width="414" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="860" width="414" height="118"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jr1-V2-Y2G" customClass="ICBirthDate" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="701" width="414" height="95"/>
+                                                <rect key="frame" x="0.0" y="983" width="414" height="117.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8A-Xa-6uY" customClass="ICButton" customModule="InstaClone" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="801" width="414" height="95"/>
+                                                <rect key="frame" x="0.0" y="1105.5" width="414" height="54.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="top" secondItem="ibT-gm-sl9" secondAttribute="top" id="DoW-ki-7HX"/>
-                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="leading" secondItem="ibT-gm-sl9" secondAttribute="leading" id="Dza-4c-jCE"/>
-                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="width" secondItem="Fuk-Qz-6JV" secondAttribute="width" id="hhK-3e-8O6"/>
-                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="bottom" secondItem="ibT-gm-sl9" secondAttribute="bottom" id="ioV-xA-8AK"/>
-                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="trailing" secondItem="ibT-gm-sl9" secondAttribute="trailing" id="oos-HI-4Kf"/>
-                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="height" secondItem="Fuk-Qz-6JV" secondAttribute="height" id="s2S-3j-SGD"/>
+                                    <constraint firstAttribute="bottom" secondItem="zDk-nQ-9ms" secondAttribute="bottom" id="7Eq-Xa-wAP"/>
+                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="top" secondItem="kDT-YC-R0j" secondAttribute="top" id="7wO-Eq-CsV"/>
+                                    <constraint firstItem="zDk-nQ-9ms" firstAttribute="leading" secondItem="kDT-YC-R0j" secondAttribute="leading" id="mZe-Ii-EOo"/>
+                                    <constraint firstAttribute="trailing" secondItem="zDk-nQ-9ms" secondAttribute="trailing" id="zS1-pf-hVr"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="ibT-gm-sl9"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="Fuk-Qz-6JV"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <viewLayoutGuide key="safeArea" id="o5r-Ht-Vz4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kDT-YC-R0j" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RmS-Dm-BzN"/>
+                            <constraint firstItem="kDT-YC-R0j" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="RmS-Dm-BzN"/>
                             <constraint firstAttribute="bottom" secondItem="kDT-YC-R0j" secondAttribute="bottom" id="aNT-Qe-CJc"/>
-                            <constraint firstItem="kDT-YC-R0j" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="gaA-ev-lcS"/>
+                            <constraint firstItem="kDT-YC-R0j" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="gaA-ev-lcS"/>
                             <constraint firstItem="kDT-YC-R0j" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="iJF-wc-Ab7"/>
                         </constraints>
                     </view>
@@ -90,6 +91,7 @@
                         <outlet property="genderChoiceField" destination="WpY-9v-PMG" id="idN-iz-EZG"/>
                         <outlet property="txtPassword" destination="Lsp-YP-pKh" id="s66-nC-7MB"/>
                         <outlet property="txtPhoneNumber" destination="Wrn-ty-rx0" id="CH1-9k-QjT"/>
+                        <outlet property="txtRepeatPassword" destination="6co-Iw-OrF" id="RhR-ns-Op6"/>
                         <outlet property="txtUserEmail" destination="KDA-h6-kca" id="h1w-bu-K5a"/>
                         <outlet property="txtUserName" destination="C3y-g4-TRV" id="cpH-Bb-OYD"/>
                         <outlet property="txtUserSurname" destination="4A4-Bb-1OZ" id="pn7-NN-h3I"/>

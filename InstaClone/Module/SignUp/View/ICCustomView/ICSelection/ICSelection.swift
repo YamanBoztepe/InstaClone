@@ -16,13 +16,13 @@ class ICSelection: UIView {
     @IBOutlet weak var stackViewBottomConstraint: NSLayoutConstraint!
     
     
-    private var selectedCountry: String? {
+    private(set) var selectedCountry: String? {
         didSet {
             txtCountry.text = selectedCountry
         }
     }
     
-    private var selectedCity: String? {
+    private(set) var selectedCity: String? {
         didSet {
             txtCity.text = selectedCity
         }
