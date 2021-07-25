@@ -12,11 +12,15 @@ class SignUpViewModelTests: XCTestCase {
     var sut: SignUpViewModel!
 
     override func setUp() {
+        super.setUp()
+        
         sut = SignUpViewModel()
     }
 
     override func tearDown() {
         sut = nil
+        
+        super.tearDown()
     }
     
     // MARK: - First Name Tests
